@@ -1,10 +1,12 @@
 window.addEventListener('DOMContentLoaded', function () {
 
+	/*jshint funcscope:true*/
+
 // preloader 
 
 	let preloader = document.querySelector('.preloader-overlay');
 
-	let preloaderTimer = setTimeout(hidePreloader, 3000);
+	setTimeout(hidePreloader, 3000);
 	
 	function hidePreloader() {
 		preloader.style.display = 'none';
@@ -23,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	popup_btn.addEventListener('click', function(){
 		popup_window.classList.add('bounceOut');
-		let timerId = setTimeout(timer, 1000);
+		setTimeout(timer, 1000);
 	});
 
 	function timer() {
@@ -80,7 +82,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		main_sex = newCard.querySelector('.sex'),
 		main_views = newCard.querySelector('.views'),
 		main_bio = newCard.querySelector('.bio'),
-		custom_name = document.getElementById('name');
+		custom_name = document.getElementById('name'),
 		custom_age = document.getElementById('age'),
 		radio = document.querySelector('.radio'),
 		custom_sex_male = radio.getElementsByTagName('input')[0],
@@ -91,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	let custom_info = document.querySelector('.custom-info');
 
 	custom_info.addEventListener('input', () => {
-		if (custom_name.value != '' && custom_age.value != '' && custom_bio.value != '') {
+		if (custom_name.value !== '' && custom_age.value !== '' && custom_bio.value !== '') {
 			custom_done_btn.classList.remove('not-available');
 			custom_done_btn.classList.add('btn');
 		} else {
@@ -103,7 +105,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	custom_age.addEventListener('input', function(event){
 
 		if (custom_age.value < 35 || custom_age.value > 65) {
-			custom_age.style.cssText = 'border: 2px solid red;'
+			custom_age.style.cssText = 'border: 2px solid red;';
 		} else {custom_age.style.cssText = '';}
 	});
 
@@ -172,7 +174,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		currentClothes_1.style.display = '';
 		center_clothes.style.cssText = '';
 		mainPerson_clothes.style.cssText = '';
-	};
+	}
 
 	function showChar() {
 		let currentSkin_2 = document.getElementsByClassName(`skin-color-${skinCounter}`)[0];
@@ -192,7 +194,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 		center_shoes.classList.add(`person-shoes${isWoman}`);
 		mainPerson_shoes.classList.add(`person-shoes${isWoman}`);
-	};
+	}
 
 	radio.addEventListener('change', function (event) {
 		
@@ -416,10 +418,3 @@ window.addEventListener('DOMContentLoaded', function () {
 	}
 
 });
-
-
-
-
-	
-
-	
