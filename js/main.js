@@ -177,7 +177,7 @@ window.addEventListener('DOMContentLoaded', function () {
 	function showChar() {
 		let currentSkin_2 = document.getElementsByClassName(`skin-color-${skinCounter}`)[0];
 		currentSkin_2.style.display = 'block';
-		center_skin.style.cssText = `background: url(../img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat; background-size: cover;`;
+		center_skin.style.cssText = `background: url(img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat; background-size: cover;`;
 		mainPerson_skin.style.cssText = `background: url(../img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat; background-size: cover;`;
 
 		let currentHair_2 = document.getElementsByClassName(`hair-style${isWoman}-${hairCounter}`)[0];
@@ -251,9 +251,9 @@ window.addEventListener('DOMContentLoaded', function () {
 			let currentSkin = document.getElementsByClassName(`skin-color-${skinCounter}`)[0];
 			currentSkin.style.display = 'block';
 			
-			center_skin.style.cssText = `background: url(../img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat;
+			center_skin.style.cssText = `background: url(img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat;
 										background-size: cover;`;
-			mainPerson_skin.style.cssText = `background: url(../img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat;
+			mainPerson_skin.style.cssText = `background: url(img/skin/skin${isWoman}-${skinCounter}.png) center no-repeat;
 										background-size: cover;`;
 
 		}
