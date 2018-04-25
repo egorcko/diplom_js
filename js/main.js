@@ -38,7 +38,6 @@ window.addEventListener('DOMContentLoaded', function () {
 	let reset = document.getElementById('reset');
 
 	reset.addEventListener('click', () => {
-		
 		customShow();
 	});
 
@@ -49,6 +48,16 @@ window.addEventListener('DOMContentLoaded', function () {
 		for (let i = 0; i < childs.length; i++) {
 			childs[i].style.display = 'block';
 		}
+		let inputArray = [custom_name, custom_age, custom_bio];
+		for (let i = 0; i < inputArray.length; i++) {
+			inputArray[i].value = '';
+		}
+		custom_sex_male.setAttribute('checked', 'true');
+		let custom_select_option = document.querySelectorAll('select > option');
+		for (let i = 0; i < custom_select_option.length; i++) {
+			custom_select_option[i].removeAttribute('selected');
+		}
+		custom_select_option[0].setAttribute('selected', 'true');
 	}
 
 
@@ -90,23 +99,61 @@ window.addEventListener('DOMContentLoaded', function () {
 		custom_views = document.getElementById('select'),
 		custom_bio = document.getElementById('bio');
 
+	let years,
+		ageArray_1 = [2,3,4],
+		ageArray_2 = [5,6,7,8,9,0];
+
 	let custom_info = document.querySelector('.custom-info');
 
 	custom_info.addEventListener('input', () => {
-		if (custom_name.value !== '' && custom_age.value !== '' && custom_bio.value !== '') {
+		if (custom_name.value !== '' && 
+			custom_name.value.length > 1 &&
+			custom_name.value.length < 51 &&
+			custom_age.value !== '' && 
+			custom_age.value > 34 &&
+			custom_age.value < 66 &&
+			custom_bio.value !== '' &&
+			custom_bio.value.length > 9) {
 			custom_done_btn.classList.remove('not-available');
 			custom_done_btn.classList.add('btn');
 		} else {
 			custom_done_btn.classList.remove('btn');
 			custom_done_btn.classList.add('not-available');
 		}
+		yearsSet();
 	});
 
-	custom_age.addEventListener('input', function(event){
+	function yearsSet() {
+		let secondChar = custom_age.value%10;
+		for (let i = 0; i < ageArray_2.length; i++) {
+			if (secondChar == ageArray_2[i]) {years = 'лет'}
+				else if (secondChar == 1) {years = 'год'}
+					else {
+						for (let j = 0; j < ageArray_1.length; j++) {
+							if (secondChar == ageArray_1[j]) {years = 'года'}
+						}
+					}
+		}
+		
+	}
 
+	custom_name.addEventListener('input', () => {
+		if (custom_name == null || custom_name.value == '' || custom_name.value.length < 2 || custom_name.value.length > 50) {
+			custom_name.style.cssText = 'border: 2px solid red;';
+		} else {custom_name.style.cssText = '';}
+
+	});
+
+	custom_age.addEventListener('input', () => {
 		if (custom_age.value < 35 || custom_age.value > 65) {
 			custom_age.style.cssText = 'border: 2px solid red;';
 		} else {custom_age.style.cssText = '';}
+	});
+
+	custom_bio.addEventListener('input', () => {
+		if (custom_bio == null || custom_bio.value == '' || custom_bio.value.length < 10) {
+			custom_bio.style.cssText = 'border: 2px solid red;';
+		} else {custom_bio.style.cssText = '';}
 	});
 
 	custom_done_btn.addEventListener('click', function (event) {
@@ -144,7 +191,7 @@ window.addEventListener('DOMContentLoaded', function () {
 		}
 		createCandidate() {
 			main_name.textContent = this.name;
-			main_age.textContent = `${this.age} лет`;
+			main_age.textContent = `${this.age} ${years}`;
 			main_sex.textContent = this.sex;
 			main_views.textContent = this.views;
 			main_bio.textContent = this.bio;
